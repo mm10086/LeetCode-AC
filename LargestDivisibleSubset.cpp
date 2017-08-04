@@ -9,7 +9,7 @@ public:
     vector<int> largestDivisibleSubset(vector<int>& nums) {
         sort(nums.begin(), nums.end());
         vector<int> dp(nums.size(), 0), parent(nums.size(), 0), res;
-        int mx = 0, mx_idx = 0;
+        int mx = 1, mx_idx = 0;//mx至少为1
         
         for (int i = 0; i < nums.size(); ++i) {
             dp[i] = 1;
