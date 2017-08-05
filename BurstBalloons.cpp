@@ -1,15 +1,15 @@
+/*
+1、先定义状态dp[i][j]表示打爆区间[i,j]中的所有气球能得到的最多金币
+2、找状态转移方程dp[i][j] = max(dp[i][j], nums[i - 1] * nums[k] * nums[j + 1] + dp[i][k - 1] + dp[k + 1][j]) (i ≤ k ≤ j)
+
+*/
 class Solution {
 public:
-    /**
-     * @param nums a list of integer
-     * @return an integer, maximum coins
-     */  
     int maxCoins(vector<int>& nums) {
-        // Write your code here
         int n = nums.size();
         nums.insert(nums.begin(), 1);
         nums.push_back(1);
-        vector<vector<int> > dp(nums.size(), vector<int>(nums.size() , 0));
+        vector<vector<int>> dp(nums.size(), vector<int>(nums.size() , 0));
         for (int len = 1; len <= n; ++len) {
             for (int left = 1; left <= n - len + 1; ++left) {
                 int right = left + len - 1;
